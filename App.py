@@ -1,4 +1,35 @@
 import streamlit as st
+st.set_page_config(layout="wide")
+
+st.markdown("""
+<style>
+
+.stApp {
+    background: #050816;
+    color: white;
+}
+
+#MainMenu {visibility:hidden;}
+footer {visibility:hidden;}
+header {visibility:hidden;}
+
+[data-testid="stSidebar"] {
+    background: #081122;
+}
+
+.block-container {
+    padding-top: 2rem;
+}
+
+.stButton button {
+    background: linear-gradient(90deg,#00d4ff,#7c3aed);
+    color: white;
+    border-radius: 12px;
+    border: none;
+}
+
+</style>
+""", unsafe_allow_html=True)
 import pandas as pd
 import json
 import os
