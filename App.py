@@ -91,21 +91,24 @@ input {
 # =========================
 
 FILE_MAP = {
-    "Fine-grained (0.5 threshold, ~9000)": "clusters_dt0.5_with_year_counts.json",
-    "Moderate (1.0 threshold, ~3000)": "clusters_dt1_with_year_counts.json",
-    "Broad (1.5 threshold, ~1600)": "clusters_dt1.5_with_year_counts.json"
+    "Fine-grained (0.5 threshold, ~9000)": "labeled_clusters_dt0.5.json",
+    "Moderate (1.0 threshold, ~3000)": "labeled_clusters_dt1.json",
+    "Broad (1.5 threshold, ~1600)": "labeled_clusters_dt1.5.json"
 }
+
+DATA_DIR = "./labeled_cluster_results"
 
 # =========================
 # LOAD DATA
 # =========================
-
 @st.cache_data
 def load_all_clusters():
     data = {}
 
     for label, file in FILE_MAP.items():
-        with open(file, "r", encoding="utf-8") as f:
+        path = os.path.join(DATA_DIR, file)
+
+        with open(path, "r", encoding="utf-8") as f:
             clusters = json.load(f)
             data[label] = clusters
 
